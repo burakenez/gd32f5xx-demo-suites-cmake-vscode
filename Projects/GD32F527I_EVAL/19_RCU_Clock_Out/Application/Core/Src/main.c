@@ -2,7 +2,7 @@
     \file    main.c
     \brief   RCU clock out demo
 
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*
@@ -36,19 +36,14 @@ OF SUCH DAMAGE.
 #include "gd32f527i_eval.h"
 #include <stdio.h>
 
-typedef enum
-{
+typedef enum {
     CKOUT0_IRC16M_CKOUT1_SYSTEMCLOCK = 0,
     CKOUT0_LXTAL_CKOUT1_PLLI2SR = 1,
     CKOUT0_HXTAL_CKOUT1_HXTAL = 2,
-}clock_output_enum;
+} clock_output_enum;
 
-void rcu_config(void);
-void gpio_config(void);
 void all_led_init(void);
 void all_led_off(void);
-void led_flash(int times);
-void dac_config(void);
 void clock_output_select(uint8_t seq);
 void clock_output_config(void);
 
@@ -166,7 +161,6 @@ void clock_output_select(uint8_t seq)
         rcu_ckout1_config(RCU_CKOUT1SRC_HXTAL, RCU_CKOUT1_DIV1);
         printf("CK_OUT0: HXTAL, CK_OUT1: HXTAL \r\n");
         break;
-
     default:
         printf("clock output select parameter error! \r\n");
         while(1);
@@ -186,7 +180,7 @@ void all_led_init(void)
     gd_eval_led_init(LED3);
 }
 
-#ifdef GD_ECLIPSE_GCC
+#ifdef __GNUC__
 /* retarget the C library printf function to the USART, in Eclipse GCC environment */
 int __io_putchar(int ch)
 {
@@ -202,4 +196,4 @@ int fputc(int ch, FILE *f)
     while(RESET == usart_flag_get(EVAL_COM0, USART_FLAG_TBE));
     return ch;
 }
-#endif /* GD_ECLIPSE_GCC */
+#endif /* __GNUC__ */

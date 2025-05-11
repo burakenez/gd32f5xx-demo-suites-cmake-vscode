@@ -2,7 +2,7 @@
     \file    drv_usbh_int.c
     \brief   USB host mode interrupt handler file
 
-    \version 2024-07-31, V1.1.0, firmware for GD32F5xx
+    \version 2024-12-20, V1.2.0, firmware for GD32F5xx
 */
 
 /*
@@ -309,7 +309,11 @@ static uint32_t usbh_int_pipe_in(usb_core_driver *udev, uint32_t pp_num)
         switch(ep_type) {
         case USB_EPTYPE_CTRL:
         case USB_EPTYPE_BULK:
-            usb_pp_halt(udev, (uint8_t)pp_num, HCHINTF_NAK, PIPE_XF);
+            if(USB_USE_DMA == udev->bp.transfer_mode) {
+                udev->regs.pr[pp_num]->HCHINTEN |= HCHINTEN_CHIE;
+            } else {
+                usb_pp_halt(udev, (uint8_t)pp_num, HCHINTF_NAK, PIPE_XF);
+            }
 
             pp->data_toggle_in ^= 1U;
             break;

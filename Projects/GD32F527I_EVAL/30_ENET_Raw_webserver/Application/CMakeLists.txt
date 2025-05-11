@@ -3,7 +3,7 @@ project(Application LANGUAGES C CXX ASM)
 add_executable(Application)
 
 set(TARGET_SRC
-    # Core
+	# Core
     Core/Src/fs.c
     # Core/Src/fsdata.c
     Core/Src/gd32f5xx_enet_eval.c
@@ -12,12 +12,10 @@ set(TARGET_SRC
     Core/Src/httpd.c
     Core/Src/main.c
     Core/Src/netconf.c
-    
-    # Core
     Core/Src/system_gd32f5xx.c
-
-    # lwip_port
-    lwip_port/GD32F5xx/Basic/ethernetif.c
+	
+    # lwip/port/GD32F5xx/Basic
+    lwip/port/GD32F5xx/Basic/ethernetif.c
 
     # Startup
     Startup/startup_gd32f5xx.s
@@ -29,9 +27,9 @@ set(TARGET_SRC
 target_sources(Application PRIVATE ${TARGET_SRC})
 
 set(TARGET_INC_DIR
-    ${CMAKE_SOURCE_DIR}/Application/Core/Inc
-    ${CMAKE_SOURCE_DIR}/Application/lwip_port/GD32F5xx
-    ${CMAKE_SOURCE_DIR}/Application/lwip_port/GD32F5xx/Basic
+	${CMAKE_SOURCE_DIR}/Application/Core/Inc
+    ${CMAKE_SOURCE_DIR}/Application/lwip/port/GD32F5xx
+    ${CMAKE_SOURCE_DIR}/Application/lwip/port/GD32F5xx/Basic
     )
 
 target_include_directories(Application PRIVATE ${TARGET_INC_DIR})
@@ -46,8 +44,8 @@ target_link_options(Application PRIVATE
 	)
 
 target_link_libraries(Application PRIVATE CMSIS)
-target_link_libraries(Application PRIVATE GD32F5xx_standard_peripheral)
 target_link_libraries(Application PRIVATE GD32F527I_EVAL)
+target_link_libraries(Application PRIVATE GD32F5xx_standard_peripheral)
 target_link_libraries(Application PRIVATE lwip)
 
 add_custom_command(TARGET Application

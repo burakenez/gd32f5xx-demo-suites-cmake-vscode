@@ -2,7 +2,7 @@
 ;    \file    startup_gd32f5xx.s
 ;    \brief   start up file
 ;
-;    \version 2024-07-31, V1.1.0, firmware for GD32F5xx
+;    \version 2024-12-20, V1.2.0, firmware for GD32F5xx
 ;*/
 ;
 ;/*
@@ -172,14 +172,27 @@ __vector_table
         PUBWEAK Reset_Handler
         SECTION .text:CODE:NOROOT:REORDER(2)
 Reset_Handler
-                LDR     r2, =0x8000
-                LDR     r1, =0x20000000
-                MOV     r0, #0x00
-        
-SRAM_INIT
-                STM     r1!, {r0}
-                SUBS    r2, r2, #4
-                CMP     r2, #0x00
+
+                LDR     R0, =0x10000000
+                MOV     R1, #64
+                LSL     R1, R1, #10
+                MOV     R2, #0x00
+TCMSRAM_INIT    STM     R0!, {R2}
+                SUBS    R1, R1, #4
+                CMP     R1, #0x00
+                BNE     TCMSRAM_INIT
+
+                LDR     R0, =0x1FFF7A20
+                LDR     R2, [R0]
+                SUBS    R2, R2, #64
+                LDR     R0, = 0x0000FFFF
+                AND     R2, R2, R0
+                LSL     R2, R2, #10
+                LDR     R1, =0x20000000
+                MOV     R0, #0x00
+SRAM_INIT       STM     R1!, {R0}
+                SUBS    R2, R2, #4
+                CMP     R2, #0x00
                 BNE     SRAM_INIT
 
         LDR     R0, =SystemInit

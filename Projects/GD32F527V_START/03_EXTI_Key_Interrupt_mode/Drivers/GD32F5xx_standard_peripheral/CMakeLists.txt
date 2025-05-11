@@ -2,7 +2,7 @@ project(GD32F5xx_standard_peripheral LANGUAGES C CXX ASM)
 
 # Comment-out unused source files.
 add_library(GD32F5xx_standard_peripheral OBJECT
-    ${DRIVERS_DIR}/GD32F5xx_standard_peripheral/Source/gd32f5xx_adc.c
+	${DRIVERS_DIR}/GD32F5xx_standard_peripheral/Source/gd32f5xx_adc.c
     ${DRIVERS_DIR}/GD32F5xx_standard_peripheral/Source/gd32f5xx_can.c
     ${DRIVERS_DIR}/GD32F5xx_standard_peripheral/Source/gd32f5xx_cau.c
     ${DRIVERS_DIR}/GD32F5xx_standard_peripheral/Source/gd32f5xx_cau_aes.c

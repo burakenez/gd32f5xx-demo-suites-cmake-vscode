@@ -2,7 +2,7 @@
     \file    exmc_nandflash.c
     \brief   nandflash(GD9FU1G8F2AMG\hynix HY27UF081G2A) driver
 
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*

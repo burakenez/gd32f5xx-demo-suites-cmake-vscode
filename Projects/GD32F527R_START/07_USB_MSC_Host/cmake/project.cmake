@@ -3,9 +3,9 @@ function(project_add_target_properties TARGET_NAME)
 target_compile_definitions(${TARGET_NAME} PRIVATE
     "$<$<CONFIG:Debug>:DEBUG>"
     "$<$<NOT:$<CONFIG:Debug>>:RELEASE>"
-    GD32F527
+	GD32F527
     USE_USB_FS
-    )
+	)
 
 target_compile_options(${TARGET_NAME} PRIVATE
     "$<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:ASM>>:-g3>"
@@ -20,13 +20,13 @@ target_compile_options(${TARGET_NAME} PRIVATE
     "$<$<AND:$<NOT:$<CONFIG:Debug>>,$<COMPILE_LANGUAGE:C>>:-Os>"
     "$<$<AND:$<NOT:$<CONFIG:Debug>>,$<COMPILE_LANGUAGE:CXX>>:-Os>"
 
-    -mcpu=cortex-m33
+	-mcpu=cortex-m33
     -mfpu=fpv5-sp-d16
     -mfloat-abi=hard
     )
 
 target_link_options(${TARGET_NAME} PRIVATE 
-    -mcpu=cortex-m33
+	-mcpu=cortex-m33
     -mfpu=fpv5-sp-d16
     -mfloat-abi=hard
     -mthumb

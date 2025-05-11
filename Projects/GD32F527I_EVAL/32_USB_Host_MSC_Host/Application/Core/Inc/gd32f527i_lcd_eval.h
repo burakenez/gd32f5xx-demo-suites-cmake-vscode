@@ -2,7 +2,7 @@
     \file    gd32f527i_lcd_eval.h
     \brief   the header file of LCD
 
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*

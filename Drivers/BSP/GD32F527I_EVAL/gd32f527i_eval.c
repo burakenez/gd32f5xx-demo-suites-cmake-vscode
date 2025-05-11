@@ -2,7 +2,7 @@
     \file    gd32f527i_eval.c
     \brief   firmware functions to manage leds, keys, COM ports
     
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*
@@ -62,7 +62,7 @@ static uint8_t KEY_PORT_SOURCE[KEYn] = {WAKEUP_KEY_EXTI_PORT_SOURCE,
 static uint8_t KEY_PIN_SOURCE[KEYn] = {WAKEUP_KEY_EXTI_PIN_SOURCE,
                                        TAMPER_KEY_EXTI_PIN_SOURCE,
                                        USER_KEY_EXTI_PIN_SOURCE};
-static uint8_t KEY_IRQn[KEYn] = {WAKEUP_KEY_EXTI_IRQn, 
+static IRQn_Type KEY_IRQn[KEYn] = {WAKEUP_KEY_EXTI_IRQn, 
                                  TAMPER_KEY_EXTI_IRQn,
                                  USER_KEY_EXTI_IRQn};
 

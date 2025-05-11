@@ -2,7 +2,7 @@
     \file    main.c
     \brief   ADC0 ADC1 Regular Parallel mode
 
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*
@@ -222,7 +222,7 @@ void timer_config(void)
     timer_enable(TIMER1);
 }
 
-#ifdef GD_ECLIPSE_GCC
+#ifdef __GNUC__
 /* retarget the C library printf function to the USART, in Eclipse GCC environment */
 int __io_putchar(int ch)
 {
@@ -238,4 +238,4 @@ int fputc(int ch, FILE *f)
     while(RESET == usart_flag_get(EVAL_COM0, USART_FLAG_TBE));
     return ch;
 }
-#endif /* GD_ECLIPSE_GCC */
+#endif /* __GNUC__ */

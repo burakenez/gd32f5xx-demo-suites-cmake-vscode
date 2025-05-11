@@ -2,7 +2,7 @@
     \file    main.c
     \brief   CTC is used to trim internal 48MHz RC oscillator with LXTAL clock
 
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*
@@ -45,7 +45,7 @@ void ctc_config(void);
 */
 int main(void)
 {
-    /* initilize LED1 */
+    /* initialize LED1 */
     gd_eval_led_init(LED1);
 
     /* enable IRC48M clock */

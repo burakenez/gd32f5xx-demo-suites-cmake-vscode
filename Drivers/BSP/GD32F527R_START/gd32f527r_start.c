@@ -2,7 +2,7 @@
     \file    gd32f527r_start.c
     \brief   firmware functions to manage leds, keys, COM ports
     
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*
@@ -50,7 +50,7 @@ static rcu_periph_enum KEY_CLK[KEYn] = {WAKEUP_KEY_GPIO_CLK};
 static exti_line_enum KEY_EXTI_LINE[KEYn] = {WAKEUP_KEY_EXTI_LINE};
 static uint8_t KEY_PORT_SOURCE[KEYn] = {WAKEUP_KEY_EXTI_PORT_SOURCE};
 static uint8_t KEY_PIN_SOURCE[KEYn] = {WAKEUP_KEY_EXTI_PIN_SOURCE};
-static uint8_t KEY_IRQn[KEYn] = {WAKEUP_KEY_EXTI_IRQn};
+static IRQn_Type KEY_IRQn[KEYn] = {WAKEUP_KEY_EXTI_IRQn};
 
 /*!
     \brief    configure led GPIO

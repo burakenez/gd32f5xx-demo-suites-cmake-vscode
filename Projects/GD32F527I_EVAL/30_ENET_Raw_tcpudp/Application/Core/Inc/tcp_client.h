@@ -2,7 +2,7 @@
     \file    tcp_client.h
     \brief   the header file of tcp_client 
 
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*

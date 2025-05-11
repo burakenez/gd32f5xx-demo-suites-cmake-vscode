@@ -1,6 +1,6 @@
 project(lwip LANGUAGES C CXX ASM)
 
-add_library(lwip OBJECT 
+add_library(lwip OBJECT
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/api/api_lib.c
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/api/api_msg.c
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/api/err.c
@@ -18,6 +18,14 @@ add_library(lwip OBJECT
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/inet_chksum.c
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/init.c
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ip.c
+    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/autoip.c
+    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/dhcp.c
+    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/etharp.c
+    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/icmp.c
+    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/igmp.c
+    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/ip4.c
+    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/ip4_addr.c
+    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/ip4_frag.c
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/mem.c
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/memp.c
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/netif.c
@@ -30,25 +38,16 @@ add_library(lwip OBJECT
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/tcp_out.c
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/timeouts.c
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/udp.c
-    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/autoip.c
-    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/dhcp.c
-    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/etharp.c
-    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/icmp.c
-    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/igmp.c
-    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/ip4.c
-    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/ip4_addr.c
-    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/core/ipv4/ip4_frag.c
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/netif/ethernet.c
     )
 
 target_include_directories(lwip PUBLIC
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/include
+    ${MIDDLEWARES_DIR}/Third_Party/lwip/src/include/ipv4
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/include/netif
     ${MIDDLEWARES_DIR}/Third_Party/lwip/src/include/lwip
-
-    # Since lwipopts.h is used in lwip
+    ${CMAKE_SOURCE_DIR}/Application/lwip/port/GD32F5xx
+    ${CMAKE_SOURCE_DIR}/Application/lwip/port/GD32F5xx/Basic
     ${CMAKE_SOURCE_DIR}/Application/Core/Inc
-    ${CMAKE_SOURCE_DIR}/Application/lwip_port/GD32F5xx
-    # ${CMAKE_SOURCE_DIR}/Application/lwip_port/GD32F5xx/arch
-    ${CMAKE_SOURCE_DIR}/Application/lwip_port/GD32F5xx/Basic
     )
+

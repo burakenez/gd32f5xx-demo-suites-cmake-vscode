@@ -2,7 +2,7 @@
     \file    gd32f5xx.h
     \brief   general definitions for GD32F5xx
 
-    \version 2024-07-31, V1.1.0, firmware for GD32F5xx
+    \version 2024-12-20, V1.2.0, firmware for GD32F5xx
 */
 
 /*
@@ -77,7 +77,7 @@ extern "C" {
 
 /* GD32F5xx firmware library version number */
 #define __GD32F5XX_STDPERIPH_VERSION_MAIN   (0x01) /*!< [31:24] main version     */
-#define __GD32F5XX_STDPERIPH_VERSION_SUB1   (0x01) /*!< [23:16] sub1 version     */
+#define __GD32F5XX_STDPERIPH_VERSION_SUB1   (0x02) /*!< [23:16] sub1 version     */
 #define __GD32F5XX_STDPERIPH_VERSION_SUB2   (0x00) /*!< [15:8]  sub2 version     */
 #define __GD32F5XX_STDPERIPH_VERSION_RC     (0x00) /*!< [7:0]   release candidate */
 #define __GD32F5XX_STDPERIPH_VERSION        ((__GD32F5XX_STDPERIPH_VERSION_MAIN << 24)\

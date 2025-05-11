@@ -2,7 +2,7 @@
     \file    drv_usb_regs.h
     \brief   USB cell registers definition and handle macros
 
-    \version 2024-07-31, V1.1.0, firmware for GD32F5xx
+    \version 2024-12-20, V1.2.0, firmware for GD32F5xx
 */
 
 /*

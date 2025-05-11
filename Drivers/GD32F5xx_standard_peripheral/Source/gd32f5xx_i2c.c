@@ -2,7 +2,7 @@
     \file    gd32f5xx_i2c.c
     \brief   I2C driver
 
-    \version 2024-07-31, V1.1.0, firmware for GD32F5xx
+    \version 2024-12-20, V1.2.0, firmware for GD32F5xx
 */
 
 /*
@@ -387,23 +387,23 @@ void i2c_dma_last_transfer_config(uint32_t i2c_periph, uint32_t dmalast)
 }
 
 /*!
-    \brief      configure RBNE clear condition
+    \brief      configure RBNE clear mode
     \param[in]  i2c_periph: I2Cx(x=0,1,2)
-    \param[in]  rbnecondition:
+    \param[in]  mode:
                 only one parameter can be selected which is shown as below:
-      \arg        I2C_CFGRBNE_ON: RBNE can be cleared when RDATA is read
-      \arg        I2C_CFGRBNE_OFF: RBNE can be cleared when RDATA is read and BTC is cleared
+      \arg        I2C_RBNE_CLEAR_BTC_0: RBNE can be cleared when I2C_DATA is read and BTC is cleared
+      \arg        I2C_RBNE_CLEAR: RBNE can be cleared when I2C_DATA is read
     \param[out] none
     \retval     none
 */
-void i2c_rbne_clear_config(uint32_t i2c_periph, uint32_t rbnecondition)
+void i2c_rbne_clear_config(uint32_t i2c_periph, uint32_t mode)
 {
-    /* configure rbne clear condition  */
+    /* configure RBNE clear mode */
     uint32_t ctl = 0U;
 
     ctl = I2C_CTL1(i2c_periph);
-    ctl &= ~(I2C_CTL1_CFGRBNE);
-    ctl |= rbnecondition;
+    ctl &= ~(I2C_CTL1_RBNECM);
+    ctl |= mode;
     I2C_CTL1(i2c_periph) = ctl;
 }
 

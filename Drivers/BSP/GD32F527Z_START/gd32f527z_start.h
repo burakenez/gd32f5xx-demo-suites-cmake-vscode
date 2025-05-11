@@ -2,7 +2,7 @@
     \file    gd32f527z_start.h
     \brief   definitions for GD32F527Z_START's leds, keys and COM ports hardware resources
     
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*

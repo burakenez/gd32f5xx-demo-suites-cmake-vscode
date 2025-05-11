@@ -2,7 +2,7 @@
     \file    gd32f5xx_hw.c
     \brief   USB hardware configuration for GD32F5xx
 
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*
@@ -154,7 +154,7 @@ void usb_intr_config(void)
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
 
 #ifdef USE_USB_FS
-    nvic_irq_enable((uint8_t)USBFS_IRQn, 3U, 0U);
+    nvic_irq_enable(USBFS_IRQn, 3U, 0U);
 
 #if USBFS_LOW_POWER
     /* enable the power module clock */
@@ -165,10 +165,10 @@ void usb_intr_config(void)
     exti_init(EXTI_18, EXTI_INTERRUPT, EXTI_TRIG_RISING);
     exti_interrupt_enable(EXTI_18);
 
-    nvic_irq_enable((uint8_t)USBFS_WKUP_IRQn, 0U, 0U);
+    nvic_irq_enable(USBFS_WKUP_IRQn, 0U, 0U);
 #endif /* USBFS_LOW_POWER */
 #elif defined(USE_USB_HS)
-    nvic_irq_enable((uint8_t)USBHS_IRQn, 3U, 0U);
+    nvic_irq_enable(USBHS_IRQn, 3U, 0U);
 
 #if USBHS_LOW_POWER
     /* enable the power module clock */
@@ -179,7 +179,7 @@ void usb_intr_config(void)
     exti_init(EXTI_20, EXTI_INTERRUPT, EXTI_TRIG_RISING);
     exti_interrupt_enable(EXTI_20);
 
-    nvic_irq_enable((uint8_t)USBHS_WKUP_IRQn, 0U, 0U);
+    nvic_irq_enable(USBHS_WKUP_IRQn, 0U, 0U);
 #endif /* USBHS_LOW_POWER */
 #endif /* USE_USB_FS */
 
@@ -201,7 +201,7 @@ void usb_timer_init(void)
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
 
     /* enable the TIMER2 global interrupt */
-    nvic_irq_enable((uint8_t)TIMER2_IRQn, 1U, 0U);
+    nvic_irq_enable(TIMER2_IRQn, 1U, 0U);
 
     rcu_periph_clock_enable(RCU_TIMER2);
 }

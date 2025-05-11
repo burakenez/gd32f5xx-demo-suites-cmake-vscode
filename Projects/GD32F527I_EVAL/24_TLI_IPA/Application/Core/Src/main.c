@@ -2,7 +2,7 @@
     \file    main.c
     \brief   TLI_IPA demo
 
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*
@@ -48,10 +48,7 @@ OF SUCH DAMAGE.
 #include "image10.h"
 #include "image11.h"
 #include "image12.h"
-#if defined (__GNUC__)
-#include "logo.h"
-#endif /* __GNUC__ */
-#if defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+#if defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050) || (__GNUC__)
 #include "logo.h"
 #endif /* __CC_ARM */
 #ifdef __IAR_SYSTEMS_ICC__

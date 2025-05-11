@@ -2,7 +2,7 @@
     \file    usbh_core.c
     \brief   USB host core state machine driver
 
-    \version 2024-07-31, V1.1.0, firmware for GD32F5xx
+    \version 2024-12-20, V1.2.0, firmware for GD32F5xx
 */
 
 /*
@@ -358,7 +358,9 @@ void usbh_core_task(usbh_host *uhost)
         /* deinitialize host for new enumeration */
         usbh_deinit(uhost);
         uhost->usr_cb->dev_deinit();
-        uhost->active_class->class_deinit(uhost);
+        if(NULL != uhost->active_class) {
+            uhost->active_class->class_deinit(uhost);
+        };
         break;
 
     case HOST_DEV_DETACHED:
@@ -368,7 +370,9 @@ void usbh_core_task(usbh_host *uhost)
         /* re-initialize host for new enumeration */
         usbh_deinit(uhost);
         uhost->usr_cb->dev_deinit();
-        uhost->active_class->class_deinit(uhost);
+        if(NULL != uhost->active_class) {
+            uhost->active_class->class_deinit(uhost);
+        };
         usbh_pipe_delete(udev);
         uhost->cur_state = HOST_DEFAULT;
         break;

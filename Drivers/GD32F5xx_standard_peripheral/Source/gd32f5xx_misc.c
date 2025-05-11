@@ -2,7 +2,7 @@
     \file    gd32f5xx_misc.c
     \brief   MISC driver
 
-    \version 2024-07-31, V1.1.0, firmware for GD32F5xx
+    \version 2024-12-20, V1.2.0, firmware for GD32F5xx
 */
 
 /*
@@ -59,7 +59,7 @@ void nvic_priority_group_set(uint32_t nvic_prigroup)
     \param[out] none
     \retval     none
 */
-void nvic_irq_enable(uint8_t nvic_irq, uint8_t nvic_irq_pre_priority,
+void nvic_irq_enable(IRQn_Type nvic_irq, uint8_t nvic_irq_pre_priority,
                      uint8_t nvic_irq_sub_priority)
 {
     uint32_t temp_priority = 0x00U, temp_pre = 0x00U, temp_sub = 0x00U;
@@ -99,7 +99,7 @@ void nvic_irq_enable(uint8_t nvic_irq, uint8_t nvic_irq_pre_priority,
     \param[out] none
     \retval     none
 */
-void nvic_irq_disable(uint8_t nvic_irq)
+void nvic_irq_disable(IRQn_Type nvic_irq)
 {
     /* disable the selected IRQ.*/
     NVIC->ICER[nvic_irq >> 0x05] = (uint32_t)0x01 << (nvic_irq & (uint8_t)0x1F);

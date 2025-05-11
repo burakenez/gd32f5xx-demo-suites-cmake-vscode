@@ -2,7 +2,7 @@
     \file    lwipopts.h
     \brief   LwIP options configuration 
 
-    \version 2024-08-02, V1.1.0, demo for GD32F5xx
+    \version 2024-12-27, V1.2.0, demo for GD32F5xx
 */
 
 /*
@@ -171,15 +171,15 @@ OF SUCH DAMAGE.
    ---------------------------------
 */
 #include "FreeRTOSConfig.h"
+#define LWIP_COMPAT_MUTEX_ALLOWED
+#define LWIP_NETIF_STATUS_CALLBACK 1
 
 #define TCPIP_THREAD_NAME              "TCP/IP"
 #define TCPIP_THREAD_STACKSIZE          1000
 #define TCPIP_MBOX_SIZE                 5
 #define DEFAULT_THREAD_STACKSIZE        500
-#define TCPIP_THREAD_PRIO               (configMAX_PRIORITIES - 2)
-#define LWIP_COMPAT_MUTEX_ALLOWED
+#define TCPIP_THREAD_PRIO               (configMAX_PRIORITIES - 2) 
 #define LWIP_COMPAT_MUTEX 1
-#define LWIP_NETIF_STATUS_CALLBACK 1
 #define DEFAULT_TCP_RECVMBOX_SIZE       8
 #define DEFAULT_UDP_RECVMBOX_SIZE       8
 #define DEFAULT_ACCEPTMBOX_SIZE         8

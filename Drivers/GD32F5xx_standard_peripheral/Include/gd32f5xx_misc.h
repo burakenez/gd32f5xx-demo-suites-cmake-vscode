@@ -2,7 +2,7 @@
     \file    gd32f5xx_misc.h
     \brief   definitions for the MISC
 
-    \version 2024-07-31, V1.1.0, firmware for GD32F5xx
+    \version 2024-12-20, V1.2.0, firmware for GD32F5xx
 */
 
 /*
@@ -73,9 +73,9 @@ OF SUCH DAMAGE.
 void nvic_priority_group_set(uint32_t nvic_prigroup);
 
 /* enable NVIC interrupt request */
-void nvic_irq_enable(uint8_t nvic_irq, uint8_t nvic_irq_pre_priority, uint8_t nvic_irq_sub_priority);
+void nvic_irq_enable(IRQn_Type nvic_irq, uint8_t nvic_irq_pre_priority, uint8_t nvic_irq_sub_priority);
 /* disable NVIC interrupt request */
-void nvic_irq_disable(uint8_t nvic_irq);
+void nvic_irq_disable(IRQn_Type nvic_irq);
 /* initiates a system reset request to reset the MCU */
 void nvic_system_reset(void);
 
